@@ -201,6 +201,7 @@ namespace Machine.Specifications.Specs.Runner
     {
         testListener.Should().NotBeNull("testListener");
         testListener.LastFatalError.Should().NotBeNull("lastFatalError");
+        testListener.LastFatalError.Message.Should().Be("not this but i want to see what it is");
         testListener.LastFatalError.InnerExceptionResult.Should().NotBeNull("innerExceptionResult");
         testListener.LastFatalError.InnerExceptionResult.Message.Should().NotBeNull("message");
 
