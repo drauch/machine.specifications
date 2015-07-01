@@ -196,12 +196,20 @@ namespace Machine.Specifications.Specs.Runner
     static Exception exception;
 
     Because of = Run<context_with_failing_cleanup>;
-      
-    It should_report_cleanup_exception = () => 
-      testListener
+
+    It should_report_cleanup_exception = () =>
+    {
+        testListener.Should().NotBeNull();
+        testListener.LastFatalError.Should().NotBeNull();
+        testListener.LastFatalError.InnerExceptionResult.Should().NotBeNull();
+        testListener.LastFatalError.InnerExceptionResult.Message.Should().NotBeNull();
+
+        testListener
         .LastFatalError
         .InnerExceptionResult
-        .Message.Should().Be(context_with_failing_cleanup.ExpectedMessage);
+        .Message.Should()
+        .Be(context_with_failing_cleanup.ExpectedMessage);
+    };
   }
 
   [Subject("Specification Runner")]
