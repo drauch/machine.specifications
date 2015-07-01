@@ -199,10 +199,10 @@ namespace Machine.Specifications.Specs.Runner
 
     It should_report_cleanup_exception = () =>
     {
-        testListener.Should().NotBeNull();
-        testListener.LastFatalError.Should().NotBeNull();
-        testListener.LastFatalError.InnerExceptionResult.Should().NotBeNull();
-        testListener.LastFatalError.InnerExceptionResult.Message.Should().NotBeNull();
+        testListener.Should().NotBeNull("testListener");
+        testListener.LastFatalError.Should().NotBeNull("lastFatalError");
+        testListener.LastFatalError.InnerExceptionResult.Should().NotBeNull("innerExceptionResult");
+        testListener.LastFatalError.InnerExceptionResult.Message.Should().NotBeNull("message");
 
         testListener
         .LastFatalError
