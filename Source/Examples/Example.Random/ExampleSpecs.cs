@@ -1,10 +1,8 @@
-﻿using System;
+﻿using FluentAssertions;
+using Machine.Specifications;
+using System;
 using System.Diagnostics;
 using System.Reflection;
-
-using FluentAssertions;
-
-using Machine.Specifications;
 
 namespace Example.Random
 {
@@ -199,10 +197,10 @@ namespace Example.Random
   [Tags(tag.example)]
   public class context_with_failing_cleanup
   {
-    public static readonly Exception ExceptionThrownByCleanup = new InvalidOperationException("something went wrong");
+    public const string ExpectedMessage = "this is a test checking whether an exception thrown by cleanup is caught and reported by the runner";
 
     It should = () => { };
-    Cleanup after = () => { throw ExceptionThrownByCleanup; };
+    Cleanup after = () => { throw new InvalidOperationException(ExpectedMessage); };
   }
 
   [Tags(tag.example)]

@@ -201,10 +201,9 @@ namespace Machine.Specifications.Specs.Runner
       testListener
         .LastFatalError
         .InnerExceptionResult
-        .Message.Should().Be(context_with_failing_cleanup.ExceptionThrownByCleanup.Message);
+        .Message.Should().Be(context_with_failing_cleanup.ExpectedMessage);
   }
 
-  [Ignore("todo check and see if ignoring this test passes the build @TC - the build issue cannot be reproduced locally?!")]
   [Subject("Specification Runner")]
   public class when_running_a_context_with_failing_specs
     : RunnerSpecs
